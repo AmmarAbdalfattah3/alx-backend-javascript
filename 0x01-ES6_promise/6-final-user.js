@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
           return { status: 'fulfilled', value: obj.value }
 	}
 	else {
-	  return { status: 'rejected', reason: obj.reason }
+	  return { status: 'rejected', reason: String(obj.reason) }
 	}
 
       })
