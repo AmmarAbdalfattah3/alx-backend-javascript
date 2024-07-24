@@ -5,7 +5,7 @@ export default getFullResponseFromAPI(success) {
     }
     else
     {
-      reject("The fake API is not working currently");
+      reject('The fake API is not working currently');
     }
   });
 }
