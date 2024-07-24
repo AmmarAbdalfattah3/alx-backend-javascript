@@ -1,3 +1,3 @@
 export default function loadBalancer(chinaDownload, USDownload) {
-  return Promise.race([chinaDownload, USDowndload]);
+  return Promise.race([chinaDownload, USDownload]);
 }
