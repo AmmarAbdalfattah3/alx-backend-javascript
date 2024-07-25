@@ -1,20 +1,18 @@
-export default class Building {
-  constructor(sqft) {
-    if (new.target === Building) {
-      throw new TypeError('Cannot construct Building instances directly');
+class Building {
+    constructor(sqft) {
+        if (new.target === Building) {
+            throw new TypeError('Cannot construct Building instances directly');
+        }
+        this._sqft = sqft;
     }
-    this._sqft = sqft;
 
-    if (this.evacuationWarningMessage === Building.prototype.evacuationWarningMessage) {
-      throw new Error('Class extending Building must override evacuationWarningMessage');
+    get sqft() {
+        return this._sqft;
     }
-  }
 
-  get sqft() {
-    return this._sqft;
-  }
-
-  static vacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
-  }
+    evacuationWarningMessage() {
+        throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
 }
+
+export default Building;
