@@ -1,4 +1,4 @@
-export default class Building {
+class Building {
   constructor(sqft) {
     if (new.target === Building) {
       throw new TypeError('Cannot construct Building instances directly');
@@ -18,3 +18,5 @@ export default class Building {
     throw new Error('Class extending Building must override evacuationWarningMessage');
   }
 }
+
+export default Building;
