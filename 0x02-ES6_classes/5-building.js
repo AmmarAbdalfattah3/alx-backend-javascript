@@ -3,7 +3,7 @@ export default class Building {
     if (new.target === Building) {
       throw new TypeError('Cannot construct Building instances directly');
     }
-    this._sqft = sqft;
+    this.sqft = sqft;
   }
 
   get sqft() {
