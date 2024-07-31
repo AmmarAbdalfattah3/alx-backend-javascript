@@ -4,9 +4,9 @@ export default function cleanSet(set, startString) {
   }
 
   const setValues = [];
-  const newArray = Array.from(set);
-  for (const element of newArray) {
-    if (element.startWith(startString)) {
+
+  for (const element of set) {
+    if (element.startsWith(startString)) {
       setValues.push(element.slice(startString.length));
     }
   }
