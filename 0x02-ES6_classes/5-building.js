@@ -3,7 +3,7 @@ export default class Building {
     if (new.target === Building) {
       throw new TypeError('Cannot construct Building instances directly');
     }
-    this._sqft = sqft;
+    this.sqft = sqft;
 
     if (this.evacuationWarningMessage === Building.prototype.evacuationWarningMessage) {
       throw new Error('Class extending Building must override evacuationWarningMessage');
