@@ -7,9 +7,9 @@ process.stdin.on('data', (input) => {
 
   console.log(`Your name is: ${name}`);
 
-  process.exit();
+  process.end();
 });
 
-process.on('exit', () => {
+process.on('end', () => {
   console.log('This important software is now closing');
 });
