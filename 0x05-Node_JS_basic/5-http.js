@@ -1,25 +1,25 @@
-const url = require('url');
 const http = require('http');
+const url = require('url');
 const countStudents = require('./3-read_file_async');
 
 const app = http.createServer(async (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-  const path = url.parse(req.url).pathname;
-
-  if (path === '/') {
+  const parsedUrl = url.parse(req.url, true);
+  
+  if (parsedUrl.pathname === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
-  } else if (path === '/students') {
+  } else if (parsedUrl.pathname === '/students') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('This is the list of our students\n');
+    
     try {
-      await countStudents(process.argv[2]);
+      const result = await countStudents(process.argv[2]);  // CSV file passed as argument
+      res.end(result);  // Send the result from the function to the client
     } catch (error) {
-      res.end(error.message);
-      return; // Ensure we exit after handling the error
+      res.end(error.message);  // Send error message if something goes wrong
     }
-    res.end(); // End the response after successfully processing
   } else {
-    res.writeHead(404);
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not found');
   }
 });
