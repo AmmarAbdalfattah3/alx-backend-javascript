@@ -4,19 +4,19 @@ const countStudents = require('./3-read_file_async');
 
 const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
-  
+
   if (parsedUrl.pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
   } else if (parsedUrl.pathname === '/students') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('This is the list of our students\n');
-    
+
     try {
-      const result = await countStudents(process.argv[2]);  // CSV file passed as argument
-      res.end(result);  // Send the result from the function to the client
+      const result = await countStudents(process.argv[2]);
+      res.end(result);
     } catch (error) {
-      res.end(error.message);  // Send error message if something goes wrong
+      res.end(error.message);
     }
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
