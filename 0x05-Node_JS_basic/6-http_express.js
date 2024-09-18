@@ -10,7 +10,16 @@ app.get('/', (req, res) => {
 
 // Handle other routes with a 404 Not Found error
 app.use((req, res) => {
-  res.status(404).send('<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET ' + req.originalUrl + '</pre>\n</body>\n</html>');
+  res.status(404).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET ${req.originalUrl}</pre>
+</body>
+</html>`);
 });
 
 // Make the server listen on port 1245
