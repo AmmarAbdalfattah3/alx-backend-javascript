@@ -8,14 +8,14 @@ function readDatabase(filePath) {
         return;
       }
 
-      const content = data.trim().split('\n').filter((line) => line !== '');
-      const header = content.shift();
+      const lines = data.trim().split('\n').filter((line) => line !== '');
+      // Remove the header line without assigning it to a variable
+      lines.shift();
+
       const studentsByField = {};
 
-      content.forEach((row) => {
-        const studentData = row.split(',');
-        const field = studentData[3];
-        const firstName = studentData[0];
+      lines.forEach((row) => {
+        const [firstName, , , field] = row.split(',');
 
         if (!studentsByField[field]) {
           studentsByField[field] = [];
