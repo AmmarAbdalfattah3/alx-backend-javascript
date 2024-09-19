@@ -12,12 +12,12 @@ const app = http.createServer(async (req, res) => {
   } else if (path === '/students') {
     res.write('This is the list of our students\n');
     try {
-      await countStudents(process.argv[2]);
+      const result = await countStudents(process.argv[2]);
+      res.end(result);
     } catch (error) {
-      res.end(error.message);
-      return;
+      res.writeHead(500);
+      res.end('Cannot load the database');
     }
-    res.end();
   } else {
     res.writeHead(404);
     res.end('Not found');
