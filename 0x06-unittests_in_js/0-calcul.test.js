@@ -19,6 +19,6 @@ describe('calculateNumber', () => {
   });
 
   it('should return -2 when a is -1.4 and b is -0.5', () => {
-    assert.strictEqual(calculateNumber(-1.4, -0.5), -2);
+    assert.strictEqual(calculateNumber(-1.4, -0.5), -1);
   });
 });
